@@ -28,6 +28,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RunMain {
+    public static final Pattern  PATTERN_COMPILE = Pattern.compile("(\\d+)-(\\d+)-(\\d+)");
     public static void main(String[] args){
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
@@ -35,7 +36,7 @@ public class RunMain {
         BookSortDetailsService bookSortDetailsService = (BookSortDetailsService) context.getBean("bookSortDetailsService");
         BookService bookService = (BookService) context.getBean("bookService");
         BookListPage.setBookService(bookService);
-        Pattern pattern = Pattern.compile("(\\d+)-(\\d+)-(\\d+)");
+        Pattern pattern = PATTERN_COMPILE;
         System.out.println("爬虫中.....");
 
         String responseBody = getRequestUrl.getRequest("https://book.jd.com/booksort.html");

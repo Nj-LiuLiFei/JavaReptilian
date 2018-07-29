@@ -7,16 +7,15 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/java_reptilian?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/iread?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </bean>
-
-
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
     </bean>
+
 
     <bean id="bookSortMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="mapper.BookSortMapper" />
@@ -42,6 +41,30 @@
         <property name="bookMapper" ref="bookMapper"></property>
     </bean>
 
+    <bean id="categoryOneMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="mapper.CategoryOneMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="categoryOneService" class="service.CategoryOneService" autowire="byName"></bean>
+
+    <bean id="categoryTwoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="mapper.CategoryTwoMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="categoryTwoService" class="service.CategoryTwoService" autowire="byName"></bean>
+
+    <bean id="categoryThreeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="mapper.CategoryThreeMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="categoryThreeService" class="service.CategoryThreeService" autowire="byName"></bean>
+
+
+    <bean id="courseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="mapper.CourseMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="courseService" class="service.CourseService" autowire="byName"></bean>
 
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

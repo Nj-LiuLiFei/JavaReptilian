@@ -14,7 +14,7 @@ public class getRequestUrl {
 
     public static String getRequest(String url){
         try {
-            TimeUnit.MINUTES.sleep(1);//分
+            TimeUnit.MINUTES.sleep(0);//分
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -23,16 +23,16 @@ public class getRequestUrl {
         try {
             response = httpclient.execute(httpget);
             if(response == null) {
-                System.out.println("商品价格请求失败");
+                System.out.println(url+"：请求失败");
                 return new JSONArray().toString();
             }
             String responseBody = httpclient.execute(httpget, new ResponseHandlerUtil<String>());
             response.close();
             return responseBody;
         } catch (IOException e) {
-            System.out.println(url);
-            getRequest(url);
             e.printStackTrace();
+            System.out.println(url);
+            //getRequest(url);
         }finally {
 
         }

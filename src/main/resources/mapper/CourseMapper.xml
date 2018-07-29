@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CourseMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+         insert into course (course_name,course_price,course_discount,course_belonged,course_pic,
+         course_wid,course_wname,course_brief,course_speaker,course_vip,
+         course_auth,course_belong_edu,course_created,course_updated,course_modifier)
+         values (#{category_name},#{course_price},#{course_discount},#{course_belonged},#{course_pic}
+         ,#{course_wid},#{course_wname},#{course_brief},#{course_speaker},#{course_vip},#{course_auth}
+         ,#{course_belong_edu},#{course_created},#{course_updated},#{course_modifier})
+    </insert>
+</mapper>    
